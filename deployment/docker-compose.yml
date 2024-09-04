@@ -1,0 +1,18 @@
+# deployment/docker-compose.yml
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: fraud_detection
